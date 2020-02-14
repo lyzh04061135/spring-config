@@ -1,0 +1,38 @@
+server:
+  port: 9082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.3.7:9080/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    appname: config-client
+    prefer-ip-address: true
+
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      name: config-server
+      label: master
+      profile: dev
+      uri: http://192.168.3.7:9081/
+  rabbitmq:
+    host: 192.168.3.7
+    port: 5672
+    username: lyzh
+    password: 123456
+    virtual-host: /

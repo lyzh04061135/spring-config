@@ -1,0 +1,19 @@
+server:
+  port: 9080
+
+eureka:
+  instance:
+    hostname: 192.168.3.7
+    lease-expiration-duration-in-seconds: 60
+    lease-renewal-interval-in-seconds: 20
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://192.168.3.7:9080/eureka/
+    healthcheck:
+      enabled: true
+
+spring:
+  application:
+    name: eureka-app
